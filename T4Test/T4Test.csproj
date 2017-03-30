@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="anycmd.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>anycmd.cs</LastGenOutput>
     </Content>
     <Content Include="SampleStoredProcedure.sql">
