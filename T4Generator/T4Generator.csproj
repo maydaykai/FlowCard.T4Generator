@@ -50,6 +50,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>01_Service.tt</DependentUpon>
     </Compile>
+    <Compile Include="02_Controller.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>02_Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="03_Views.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>03_Views.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +73,14 @@
     <Content Include="01_Service.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>01_Service.cs</LastGenOutput>
+    </Content>
+    <Content Include="02_Controller.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>02_Controller.cs</LastGenOutput>
+    </Content>
+    <Content Include="03_Views.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>03_Views.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

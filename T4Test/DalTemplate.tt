@@ -34,7 +34,28 @@ namespace T4ConsoleApplication.Entities
         /// </summary>        
         public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
         <#}#> 
-      
+
+		/// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public bool ModifyRepaymentPlanSplit(RepaymentPlanSplitModel model)
+        {
+			<#
+				var sql = "UPDATE dbo."+config.TableName+" SET ";
+				var prePara = "@";
+				var paras = "{";
+				foreach(DbColumn column in DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, config.TableName)){
+					if(!column.IsPrimaryKey)
+						sql += column.ColumnName + "=" + prePara + column.ColumnName + ",";
+					else
+						sql += " WHERE " + column.ColumnName + "=" + prePara + column.ColumnName;
+					paras += "new SqlParameter("+prePara + column.ColumnName+", SqlDbType."+column.ColumnType+"){Value= model."+column.ColumnName+"}";
+				}
+				paras += "}";
+			#> 
+			var sql = "<#=sql#>";
+			var paras = <#=paras#>;
+		}
     }
 }
 

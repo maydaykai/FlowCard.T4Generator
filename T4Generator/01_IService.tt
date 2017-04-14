@@ -21,14 +21,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using Domain;
 namespace Service.IService
 {    
 <#
-	var name = config.TableName.Substring(4,1).ToUpper() + config.TableName.Substring(5).ToLower();
+	var name = config.Name;
+	var desc = config.Desc;
 #>
-	public interface I<#=name#>Manage : IRepository<<#=config.TableName#>>
+	/// <summary>
+    /// <#=desc#>业务接口
+    /// </summary>
+	public interface I<#=name#>Manage : IRepository<Domain.<#=config.TableName#>>
     {
 
     }

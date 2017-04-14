@@ -48,6 +48,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>anycmd.tt</DependentUpon>
     </Compile>
+    <Compile Include="DalTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DalTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +64,10 @@
     <Content Include="anycmd.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>anycmd.cs</LastGenOutput>
+    </Content>
+    <Content Include="DalTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DalTemplate.cs</LastGenOutput>
     </Content>
     <Content Include="SampleStoredProcedure.sql">
       <AutoGen>True</AutoGen>

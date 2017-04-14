@@ -21,15 +21,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Domain;
 using Service.IService;
 
 namespace Service.ServiceImp
 {  
 <#
-	var name = config.TableName.Substring(4,1).ToUpper() + config.TableName.Substring(5).ToLower();
+	var name = config.Name;
 #>
-	public class <#=name#>Manage : RepositoryBase<<#=config.TableName#>>, I<#=name#>Manage
+	public class <#=name#>Manage : RepositoryBase<Domain.<#=config.TableName#>>, I<#=name#>Manage
     {
 
     }
