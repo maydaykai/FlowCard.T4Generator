@@ -1,0 +1,81 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ output extension=".cs" #>
+<#@ include file="$(ProjectDir)00_DbHelper.ttinclude"  #>
+@*--------------------------------------------------------------------
+    ------------------------------------------------------------------
+    创建时间：<#=DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")#> by mayday
+    ------------------------------------------------------------------
+    ------------------------------------------------------------------*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<#
+	var name = config.Name;
+	var desc = config.Desc;
+	var dbColumns = DbHelper.GetDbColumns(config.ConnectionString, config.DbDatabase, config.TableName);
+#>
+@model Domain.<#=config.TableName #>
+<style type="text/css">
+    .gray-bg {
+        background-color: white;
+    }
+</style>
+@using (Ajax.BeginForm("Save", null, new AjaxOptions()
+{
+    HttpMethod = "Post",
+    OnBegin = "SubAjax.Loading",
+    OnComplete = "SubAjax.Complate",
+    OnFailure = "SubAjax.Failure",
+    OnSuccess = "SubAjax.Success"
+},
+new { @class = "form-horizontal dig-from", @role = "form" }))
+{
+	<#	foreach(DbColumn column in dbColumns){#>
+		@Html.HiddenFor(p => p.<#=column.ColumnName #>)
+	<#}#>
+
+    <div class="wrapper wrapper-content animated fadeInUp">
+        <div class="row">
+            <div class="ibox-detail-title">
+                <i class="fa fa-pencil-square-o"></i>添加/修改<#=desc#>
+            </div>
+            <div class="ibox-content">
+                <div class="hr-line-dashed"></div>
+                <div class="row">				
+					<#	foreach(DbColumn column in dbColumns){#>
+					<div class="col-xs-6">
+						<div class="form-group">
+							<label class="col-xs-4 control-label"><#=column.Remark#>：</label>
+							<div class="col-xs-8">
+								@Html.TextBoxFor(p => p.<#=column.ColumnName#>, new { @class = "form-control", @placeholder = "请输入<#=column.Remark#>", @datatype = "*", @nullmsg = "请输入<#=column.Remark#>！", @errormsg = "请输入<#=column.Remark#>！" })
+							</div>
+						</div>
+					</div>
+					<#}#>
+                </div>
+                <div class="hr-line-dashed"></div>
+                <div class="hr-line-dashed"></div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-save" type="submit"><i class="fa fa-check"></i> <span>确定保存</span></button>
+                    <button class="btn btn-warning" id="btn-dig-close" type="button"><i class="fa fa-reply-all"></i> 取消返回</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts{
+    <script type="text/javascript">
+
+    </script>
+}

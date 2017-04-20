@@ -55,10 +55,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>02_Controller.tt</DependentUpon>
     </Compile>
-    <Compile Include="03_Views.cs">
+    <Compile Include="03_Views_Detail.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>03_Views.tt</DependentUpon>
+      <DependentUpon>03_Views_Detail.tt</DependentUpon>
+    </Compile>
+    <Compile Include="03_Views_List.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>03_Views_List.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,9 +83,13 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>02_Controller.cs</LastGenOutput>
     </Content>
-    <Content Include="03_Views.tt">
+    <Content Include="03_Views_Detail.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>03_Views.cs</LastGenOutput>
+      <LastGenOutput>03_Views_Detail.cs</LastGenOutput>
+    </Content>
+    <Content Include="03_Views_List.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>03_Views_List.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

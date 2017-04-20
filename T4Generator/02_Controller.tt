@@ -69,7 +69,7 @@ namespace WebPage.Areas.CardManage.Controllers
             try
             {
                 var _entity = new Domain.<#=config.TableName#>();
-                if (id != null && id != "")
+                if (!string.IsNullOrEmpty(id))
                 {
                     _entity = <#=name#>Manage.Get(p => p.<#=primaryKeyColumn.ColumnName#> == id);
                 }
